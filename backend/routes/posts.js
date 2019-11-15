@@ -1,9 +1,7 @@
 const express = require("express");
 const multer = require("multer");
-
 const Post = require("../models/post");
 const checkAuth = require("../middleware/check-auth");
-
 const router = express.Router();
 
 const MIME_TYPE_MAP = {
@@ -19,7 +17,7 @@ const storage = multer.diskStorage({
     if (isValid) {
       error = null;
     }
-    cb(error, "/home/sanjayd/Desktop/JavaCOE/backend/images");
+    cb(error, "/home/sanjayd/Desktop/angularApp/backend/images");
   },
   filename: (req, file, cb) => {
     const name = file.originalname
@@ -31,9 +29,7 @@ const storage = multer.diskStorage({
   }
 });
 
-router.post(
-  "",
-  checkAuth,
+router.post("", checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -62,9 +58,7 @@ router.post(
   }
 );
 
-router.put(
-  "/:id",
-  checkAuth,
+router.put("/:id", checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;

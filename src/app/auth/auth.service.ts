@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 
-import { AuthData } from "./auth-data.model";
+import { AuthData, CreateLoginUser } from "./auth-data.model";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -31,10 +31,12 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+  createUser(email: string, fname : string, lname : string, mobile :number, password: string, conpassword : string) {
+    const CreateLoginUser: CreateLoginUser = { email: email, fname : fname,
+      lname : lname, mobile : mobile, password: password, conpassword : conpassword };
+      console.log(CreateLoginUser)
     this.http
-      .post("http://localhost:3000/api/user/signup", authData)
+      .post("http://localhost:3000/api/user/signup", CreateLoginUser)
       .subscribe(() => {
         this.router.navigate(["/"]);
       }, error => {
@@ -64,7 +66,7 @@ export class AuthService {
           );
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate, this.userId);
-          this.router.navigate(["/"]);
+          this.router.navigate(["/postlist"]);
         }
       }, error => {
         this.authStatusListener.next(false);

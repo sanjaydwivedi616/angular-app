@@ -15,12 +15,9 @@ export class PostsService {
 
   getPosts(postsPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
-    this.http
-      .get<{ message: string; posts: any; maxPosts: number }>(
-        "http://localhost:3000/api/posts" + queryParams
-      )
-      .pipe(
-        map(postData => {
+    this.http.get<{ message: string; posts: any; maxPosts: number }>(
+        "http://localhost:3000/api/posts" + queryParams)
+        .pipe(map(postData => {
           return {
             posts: postData.posts.map(post => {
               return {
@@ -63,13 +60,12 @@ export class PostsService {
     postData.append("title", title);
     postData.append("content", content);
     postData.append("image", image, title);
-    this.http
-      .post<{ message: string; post: Post }>(
+    this.http.post<{ message: string; post: Post }>(
         "http://localhost:3000/api/posts",
         postData
       )
       .subscribe(responseData => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/postlist"]);
       });
   }
 
@@ -90,8 +86,7 @@ export class PostsService {
         creator: null
       };
     }
-    this.http
-      .put("http://localhost:3000/api/posts/" + id, postData)
+    this.http.put("http://localhost:3000/api/posts/" + id, postData)
       .subscribe(response => {
         this.router.navigate(["/"]);
       });
