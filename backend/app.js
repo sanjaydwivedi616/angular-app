@@ -17,7 +17,7 @@
  const Post = require("./models/post");
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({ extended: false }));
- app.use("/images", express.static(path.join("/home/sanjayd/Desktop/JavaCOE/backend/images")));
+ app.use("/images", express.static(path.join("/home/sanjayd/Desktop/angularApp/backend/images")));
 
  app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
