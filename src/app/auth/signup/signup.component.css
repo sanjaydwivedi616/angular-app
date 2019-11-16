@@ -1,7 +1,13 @@
 mat-form-field {
-  width: 100%;
+    width: 100%;
 }
 
 mat-spinner {
-  margin: auto;
+    margin: auto;
+}
+
+.error {
+    margin-top: -15px;
+    font-size: 12px;
+    color: red;
 }
