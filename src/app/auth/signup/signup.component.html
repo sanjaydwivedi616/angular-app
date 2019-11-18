@@ -14,7 +14,7 @@
       <mat-error *ngIf="lnameInput.invalid">Please enter last name.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="mobile" ngModel type="text" placeholder="Mobile No." #mobileInput="ngModel" required mobile>
+      <input matInput name="mobile" ngModel type="text" placeholder="Mobile No." #mobileInput="ngModel" required mobile numbersOnly minlength="10" maxlength="10">
       <mat-error *ngIf="mobileInput.invalid">Please enter mobile no.</mat-error>
     </mat-form-field>
     <mat-form-field>
