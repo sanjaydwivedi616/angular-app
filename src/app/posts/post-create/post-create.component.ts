@@ -28,7 +28,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     public postsService: PostsService,
     public route: ActivatedRoute,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.authStatusSub = this.authService

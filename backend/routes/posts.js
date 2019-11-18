@@ -30,7 +30,9 @@ const storage = multer.diskStorage({
 });
 
 router.post("", checkAuth,
-  multer({ storage: storage }).single("image"),
+  multer({
+    storage: storage
+  }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
     const post = new Post({
@@ -59,7 +61,9 @@ router.post("", checkAuth,
 );
 
 router.put("/:id", checkAuth,
-  multer({ storage: storage }).single("image"),
+  multer({
+    storage: storage
+  }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
     if (req.file) {
@@ -73,12 +77,19 @@ router.put("/:id", checkAuth,
       imagePath: imagePath,
       creator: req.userData.userId
     });
-    Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
+    Post.updateOne({
+        _id: req.params.id,
+        creator: req.userData.userId
+      }, post)
       .then(result => {
         if (result.nModified > 0) {
-          res.status(200).json({ message: "Update successful!" });
+          res.status(200).json({
+            message: "Update successful!"
+          });
         } else {
-          res.status(401).json({ message: "Not authorized!" });
+          res.status(401).json({
+            message: "Not authorized!"
+          });
         }
       })
       .catch(error => {
@@ -122,7 +133,9 @@ router.get("/:id", (req, res, next) => {
       if (post) {
         res.status(200).json(post);
       } else {
-        res.status(404).json({ message: "Post not found!" });
+        res.status(404).json({
+          message: "Post not found!"
+        });
       }
     })
     .catch(error => {
@@ -133,13 +146,20 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id, creator: req.userData.userId })
+  Post.deleteOne({
+      _id: req.params.id,
+      creator: req.userData.userId
+    })
     .then(result => {
       console.log(result);
       if (result.n > 0) {
-        res.status(200).json({ message: "Deletion successful!" });
+        res.status(200).json({
+          message: "Deletion successful!"
+        });
       } else {
-        res.status(401).json({ message: "Not authorized!" });
+        res.status(401).json({
+          message: "Not authorized!"
+        });
       }
     })
     .catch(error => {

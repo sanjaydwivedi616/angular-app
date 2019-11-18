@@ -13,7 +13,7 @@ export class AuthService {
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   getToken() {
     return this.token;
@@ -31,10 +31,12 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(email: string, fname : string, lname : string, mobile :number, password: string, conpassword : string) {
-    const CreateLoginUser: CreateLoginUser = { email: email, fname : fname,
-      lname : lname, mobile : mobile, password: password, conpassword : conpassword };
-      console.log(CreateLoginUser)
+  createUser(email: string, fname: string, lname: string, mobile: number, password: string, conpassword: string) {
+    const CreateLoginUser: CreateLoginUser = {
+      email: email, fname: fname,
+      lname: lname, mobile: mobile, password: password, conpassword: conpassword
+    };
+    console.log(CreateLoginUser)
     this.http
       .post("http://localhost:3000/api/user/signup", CreateLoginUser)
       .subscribe(() => {

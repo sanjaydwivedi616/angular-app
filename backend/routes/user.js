@@ -10,9 +10,9 @@ router.post("/signup", (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(hash => {
     const user = new User({
       email: req.body.email,
-      fname : req.body.fname,
-      lname : req.body.lname,
-      mobile : req.body.mobile,
+      fname: req.body.fname,
+      lname: req.body.lname,
+      mobile: req.body.mobile,
       password: hash,
     });
     console.log(user)
@@ -33,7 +33,9 @@ router.post("/signup", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  User.findOne({ email: req.body.email })
+  User.findOne({
+      email: req.body.email
+    })
     .then(user => {
       if (!user) {
         return res.status(401).json({
@@ -49,10 +51,13 @@ router.post("/login", (req, res, next) => {
           message: "Auth failed"
         });
       }
-      const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret_this_should_be_longer",
-        { expiresIn: "1h" }
+      const token = jwt.sign({
+          email: fetchedUser.email,
+          userId: fetchedUser._id
+        },
+        "secret_this_should_be_longer", {
+          expiresIn: "1h"
+        }
       );
       res.status(200).json({
         token: token,

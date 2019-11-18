@@ -11,26 +11,26 @@ export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<{ posts: Post[]; postCount: number }>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   getPosts(postsPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http.get<{ message: string; posts: any; maxPosts: number }>(
-        "http://localhost:3000/api/posts" + queryParams)
-        .pipe(map(postData => {
-          return {
-            posts: postData.posts.map(post => {
-              return {
-                title: post.title,
-                content: post.content,
-                id: post._id,
-                imagePath: post.imagePath,
-                creator: post.creator
-              };
-            }),
-            maxPosts: postData.maxPosts
-          };
-        })
+      "http://localhost:3000/api/posts" + queryParams)
+      .pipe(map(postData => {
+        return {
+          posts: postData.posts.map(post => {
+            return {
+              title: post.title,
+              content: post.content,
+              id: post._id,
+              imagePath: post.imagePath,
+              creator: post.creator
+            };
+          }),
+          maxPosts: postData.maxPosts
+        };
+      })
       )
       .subscribe(transformedPostData => {
         this.posts = transformedPostData.posts;
@@ -61,9 +61,9 @@ export class PostsService {
     postData.append("content", content);
     postData.append("image", image, title);
     this.http.post<{ message: string; post: Post }>(
-        "http://localhost:3000/api/posts",
-        postData
-      )
+      "http://localhost:3000/api/posts",
+      postData
+    )
       .subscribe(responseData => {
         this.router.navigate(["/postlist"]);
       });
