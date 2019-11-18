@@ -1,4 +1,3 @@
-
  const express = require('express');
  const app = express();
  const path = require("path");
@@ -33,4 +32,5 @@
   });
   app.use("/api/posts", postsRoutes);
   app.use("/api/user", userRoutes);
+  
 module.exports = app;

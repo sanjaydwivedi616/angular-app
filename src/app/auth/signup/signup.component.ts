@@ -11,7 +11,6 @@ import { AuthService } from "../auth.service";
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
-
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
@@ -23,6 +22,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSignup(form: NgForm) {
+
     if (form.invalid) {
       return;
     }
