@@ -26,6 +26,8 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from "./error-interceptor";
 import { ErrorComponent } from "./error/error.component";
+import { ShoppingListComponent } from './posts/shopping/shopping-list.component';
+import { AddItemsComponent } from './posts/add-items/add-items.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ErrorComponent } from "./error/error.component";
     LoginComponent,
     SignupComponent,
     ErrorComponent,
-    NumberDirective
+    NumberDirective,
+    ShoppingListComponent,
+    AddItemsComponent
   ],
   imports: [
     BrowserModule,
