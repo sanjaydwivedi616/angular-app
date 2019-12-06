@@ -1,21 +1,21 @@
-<form action="/action_page.php">
+<form action="" (ngSubmit)="formSubmitItem(f)" #f="ngForm">
   <div class="row">
     <div class="col-sm-4">
       <div class="form-group">
         <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
+        <input type="text" class="form-control" name="nameItem" ngModel>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="form-group">
-        <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
+        <label for="itemName">Value Item</label>
+        <input type="text" class="form-control" name="ValueItem" ngModel>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="form-group">
-        <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
+        <label for="itemName">Simple</label>
+        <input type="text" class="form-control" name="simpleItem" ngModel>
       </div>
     </div>
   </div>
@@ -23,50 +23,34 @@
     <div class="col-sm-4">
       <div class="form-group">
         <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
+        <input type="text" class="form-control" name="itemName" ngModel>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="form-group">
-        <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
+        <label for="itemName">Slection Option</label>
+        <select class="form-control" ngModel name="selectOption">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label for="itemName">Item Name</label>
-        <input type="test" class="form-control" name="itemName">
-      </div>
-    </div>
-    <div class="col-sm-4">
+   <div class="col-sm-4">
       <div class="form-group">
         <label for="itemName">select Items</label><br>
         <label>Single
-          <input type="radio" name="single" value="single">
+          <input type="radio" ngModel name="single" value="single">
         </label>
         <label>Double
-          <input type="radio" name="single" value="double">
+          <input type="radio" ngModel name="single" value="double">
         </label>
       </div>
     </div>
   </div>
 
   <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
+    <label><input type="checkbox" name="term&condition" ngModel >Term & Condition</label>
   </div>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
