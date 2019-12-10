@@ -42,7 +42,7 @@
                 <mat-error *ngIf="conpasswordInput.invalid">Please enter conform Password</mat-error>
             </mat-form-field>
             <p class="error" *ngIf="conpassword != '' && password !== conpassword">Password is not matching</p>
-            <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">Signup</button>
         </div>
+        <button class="btn btn-primary div-center" type="submit" *ngIf="!isLoading">Signup</button>
     </div>
 </form>
