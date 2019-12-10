@@ -1,11 +1,16 @@
-
-mat-spinner {
-  margin: auto;
+.loginForm {
+    box-shadow: 0px 0px 10px 2px #4409a2;
+    padding: 2%;
+    border-radius: .25rem;
 }
 
-.loginForm {
-  width: 50%;
-  margin: auto;
-  box-shadow: 0px 1px 18px 2px #2e7bff;
-  padding: 3%;
+mat-spinner {
+    margin: auto;
+}
+
+@media screen and (min-width:780px) {
+    .loginForm {
+        width: 40%;
+        margin: auto;
+    }
 }
